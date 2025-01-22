@@ -28,7 +28,7 @@ def main():
     parser.add_argument('--output', type=str, default='results/DRCT-L', help='output folder')
     parser.add_argument('--scale', type=int, default=4, help='scale factor: 1, 2, 3, 4')
     #parser.add_argument('--window_size', type=int, default=16, help='16')
-    
+
     parser.add_argument('--tile', type=int, default=None, help='Tile size, None for no tile during testing (testing as a whole)')
     parser.add_argument('--tile_overlap', type=int, default=32, help='Overlapping of different tiles')
     
@@ -95,7 +95,7 @@ def main():
             cv2.imwrite(os.path.join(args.output, f'{imgname}_DRCT-L_X4.png'), output)
 
             # Calculate PSNR
-            gt_path = os.path.join(args.gt, f'{imgname}.png')  # Assuming ground truth images have .png extension
+            gt_path =  os.path.join('/home/honey/DRCT/Div2k/hr', f'{imgname}.png')  # Assuming ground truth images have .png extension
             if os.path.exists(gt_path):
                 gt_img = cv2.imread(gt_path, cv2.IMREAD_COLOR).astype(np.float32)
                 psnr = calculate_psnr(output, gt_img)
